@@ -1,0 +1,28 @@
+{
+  "name": "RealFastify",
+  "version": "1.0.0",
+  "description": "Proof of Concept using Fastify",
+  "main": "app/index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node app/index",
+    "dev": "cross-env NODE_ENV=development nodemon src app/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Waldir Borba Junior <wborbajr@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^2.15.1",
+    "fastify-boom": "^0.1.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "laabr": "^6.1.1",
+    "moment": "^2.27.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.2.3"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "nodemon": "^2.0.4"
+  }
+}
