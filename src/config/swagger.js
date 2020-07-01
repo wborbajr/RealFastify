@@ -12,7 +12,7 @@ exports.options = {
       url: "https://github.com/csrodi/visitors-nodejs-server",
       description: "Find more info here",
     },
-    host: "localhost:6000",
+    host: process.env.HOST_AND_PORT,
     schemes: ["http", "https"],
     consumes: ["application/json"],
     produces: ["application/json"],

@@ -1,10 +1,11 @@
 const fastifyPlugin = require("fastify-plugin");
 const mongoose = require("mongoose");
+const config = require("./ecosystem.config");
 
 // Connect to DB
 async function dbConnector(fastify, options) {
   try {
-    const url = "mongodb://localhost:27017/fastify-blog";
+    const url = config.mongo.uri;
     const db = await mongoose.connect(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
