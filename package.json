@@ -2,10 +2,10 @@
   "name": "RealFastify",
   "version": "1.0.0",
   "description": "Proof of Concept using Fastify",
-  "main": "app/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node app/index",
-    "dev": "cross-env NODE_ENV=development nodemon src app/index",
+    "start": "cross-env NODE_ENV=production node src/index",
+    "dev": "cross-env NODE_ENV=development nodemon src/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

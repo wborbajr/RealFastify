@@ -10,8 +10,13 @@ const fs = require("fs");
 const dotenv = require("dotenv");
 
 const swagger = require("./config/swagger");
-const dbconnect = require("./config/mongo.config");
 const config = require("./config/ecosystem.config");
+const dbconnect = require("./config/mongo.config");
+
+// const environment = process.env.NODE_ENV;
+// console.log("process.env.NODE_ENV: " + environment);
+// console.log("config " + config.app.ip_address);
+// process.exit(1);
 
 if (process.env.NODE_ENV !== "production") {
 }
@@ -43,7 +48,7 @@ app.register(cors, {
 });
 
 const PORT = config.app.port;
-const ADDRESS = config.app.host;
+const ADDRESS = config.app.ip_address;
 
 // import routes
 const routes = require("./routes");
