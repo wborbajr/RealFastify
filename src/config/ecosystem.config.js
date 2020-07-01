@@ -11,6 +11,9 @@ const development = {
       options: { useNewUrlParser: true, useUnifiedTopology: true },
     },
   },
+  swagger: {
+    host_port: "127.0.0.1:3030",
+  },
 };
 
 const production = {
@@ -23,6 +26,9 @@ const production = {
       url: "mongodb://localhost:27017/fastify-blog_prod",
       options: { useNewUrlParser: true, useUnifiedTopology: true },
     },
+  },
+  swagger: {
+    host_port: "0.0.0.0:5050",
   },
 };
 

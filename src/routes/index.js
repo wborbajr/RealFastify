@@ -1,3 +1,4 @@
 const visitor = require("./visitor");
+const def = require("./default");
 
-module.exports = [].concat(visitor);
+module.exports = [].concat(def, visitor);

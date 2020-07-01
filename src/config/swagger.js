@@ -1,3 +1,5 @@
+const config = require("./ecosystem.config");
+
 exports.options = {
   routePrefix: "/docs",
   exposeRoute: true,
@@ -12,7 +14,7 @@ exports.options = {
       url: "https://github.com/csrodi/visitors-nodejs-server",
       description: "Find more info here",
     },
-    host: process.env.HOST_AND_PORT,
+    host: config.swagger.host_port,
     schemes: ["http", "https"],
     consumes: ["application/json"],
     produces: ["application/json"],
