@@ -23,6 +23,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const options = {
   logger: true,
+  ignoreTrailingSlash: true,
   // https: {
   //   key: fs.readFileSync(path.join(__dirname, "/certificate/", "key.pem")),
   //   cert: fs.readFileSync(path.join(__dirname, "/certificate/", "cert.pem")),
@@ -44,7 +45,13 @@ app.register(dbconnect);
 
 // enable cors
 app.register(cors, {
-  origin: "*",
+  origin: [
+    /^http(|s)\:\/\/localhost(|:\d+)$/,
+    /^http(|s)\:\/\/127\.0\.0\.1(|:\d+)$/,
+  ],
+  methods: ["GET", "OPTIONS", "POST"],
+  credentials: true,
+  maxAge: 1728000,
 });
 
 const PORT = config.app.port;
