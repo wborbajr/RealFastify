@@ -3,6 +3,7 @@ const boom = require("boom");
 
 // Get Data Models
 const Visitor = require("../models/visitor");
+const { Promise } = require("mongoose");
 
 // Get all visitors
 exports.getVisitors = async (req, reply) => {
@@ -60,3 +61,11 @@ exports.deleteVisitor = async (req, reply) => {
     throw boom.boomify(err);
   }
 };
+
+// const x = wait function()
+// const result  = await Promise.all([
+//   function()
+//   function()
+// ])
+// const result1 = result[0]
+// const result2 = result[1]
