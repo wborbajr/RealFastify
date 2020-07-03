@@ -62,6 +62,10 @@ Please make sure to update tests as appropriate.
 - 'Push' your branch
 - At Pull Requests from original project create a pull request with your commit
 
+## How To Create a Pull Request on GitHub
+
+[Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github)
+
 ## License
 
 [MIT License](https://github.com/wborbajr/RealFastify/blob/master/LICENSE)
