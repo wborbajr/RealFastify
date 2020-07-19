@@ -1,4 +1,5 @@
 const visitor = require("./visitor");
 const def = require("./default");
+const fn = require("./fnRoutes");
 
-module.exports = [].concat(def, visitor);
+module.exports = [...def, ...visitor, ...fn];

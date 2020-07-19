@@ -7,16 +7,18 @@ const fastifyCookie = require("fastify-cookie");
 
 const path = require("path");
 const fs = require("fs");
-const dotenv = require("dotenv");
 
-const swagger = require("./config/swagger");
+const Colors = require("colors");
+const Emoji = require("node-emoji");
+
+// const swagger = require("./config/swagger");
 const config = require("./config/ecosystem.config");
 const dbconnect = require("./config/mongo.config");
+const SwaggerOptions = require("./common/swaggerOptions");
 
-// const environment = process.env.NODE_ENV;
-// console.log("process.env.NODE_ENV: " + environment);
-// console.log("config " + config.app.ip_address);
-// process.exit(1);
+const CommonFunctions = require("./common/commonFunctions");
+const RealRoutes = require("./routes/realRoutes");
+const FastiRoutes = require("./routes/fastiRoutes");
 
 if (process.env.NODE_ENV !== "production") {
 }
@@ -37,8 +39,8 @@ const app = fastify(options);
 app.register(fastifyCookie);
 app.register(fastifySession, secretKey);
 
-//swagger configuration
-app.register(require("fastify-swagger"), swagger.options);
+// Register Swagger
+app.register(require("fastify-swagger"), SwaggerOptions);
 
 // registering mongodb plugin
 app.register(dbconnect);
@@ -57,19 +59,30 @@ app.register(cors, {
 const PORT = config.app.port;
 const ADDRESS = config.app.ip_address;
 
-// import routes
+// mapping routes
 const routes = require("./routes");
 routes.forEach((route, index) => {
   app.route(route);
 });
 
+// mapping routes
+// app.route(
+//   ...CommonFunctions.mapRoutes(new RealRoutes(), RealRoutes.methods()),
+//   ...CommonFunctions.mapRoutes(new FastiRoutes(), FastiRoutes.methods())
+// );
+
 const start = async () => {
   try {
     await app.ready();
     await app.listen(PORT, ADDRESS);
-    const log = `🚀 Server running in ${process.env.NODE_ENV} mode on port ${PORT} .:: on http://${ADDRESS}:${PORT} ::. Main:(${__filename})`;
 
-    app.log.info(log);
+    app.swagger();
+
+    console.log(
+      Emoji.get("rocket"),
+      `Server running in ${process.env.NODE_ENV} mode on port ${PORT} .:: on http://${ADDRESS}:${PORT}`
+        .green
+    );
   } catch (error) {
     app.log.error(error);
     process.exit(1);
